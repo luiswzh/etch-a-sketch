@@ -1,0 +1,56 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    margin: 0px;
+    min-height: 100vh;
+    background-color: lightgray;
+    font-size: large;
+}
+
+.header, .content, .footer{
+    display: flex;
+    justify-content: center;
+    padding: 10px 5vw;
+    gap: 10vw;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.grid{
+    min-height: 35vw;
+    max-height: 35vw;
+    min-width: 35vw;
+    border: 3px dashed lightsteelblue;
+    padding: 0px;
+    background-color: white;
+}
+
+.header, .footer{
+    color:aliceblue;
+    background-color: darkcyan;
+}
+
+.content{
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: aliceblue;
+    font-size: large;
+}
+
+button{
+    padding: 10px;
+}
+
+h1{
+    margin: 15px;
+}
+
