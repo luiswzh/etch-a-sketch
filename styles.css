@@ -26,9 +26,12 @@ body {
     min-height: 35vw;
     max-height: 35vw;
     min-width: 35vw;
+    max-width: 35vw;
     border: 3px dashed lightsteelblue;
     padding: 0px;
     background-color: white;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .header, .footer{
@@ -54,3 +57,11 @@ h1{
     margin: 15px;
 }
 
+#custom input{
+    border-width: 0px;
+}
+
+#custom{
+    display:flex;
+    align-items: center;
+}
