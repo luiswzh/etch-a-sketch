@@ -100,6 +100,14 @@ greyScaleButton.addEventListener('click', ()=>{
 gridSizeButton.addEventListener('click', ()=>{
     clearGrid();
     gridSize=prompt('Input grid size: ');
+    if(gridSize>100){
+        gridSize=100;
+        alert('Grid size too big! setting to max (100)');
+    }
+    if( !(+gridSize) || gridSize <0){
+        gridSize=16;
+        alert('Unvalid grid size! setting to default (16)');
+    }
     createGrid(gridSize);
 });
 
