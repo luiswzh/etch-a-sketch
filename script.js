@@ -8,9 +8,11 @@ const gridSizeButton = document.querySelector('#grid-size');
 const resetButton = document.querySelector('#reset');
 const grid = document.querySelector('.grid');
 const colorPalette=document.querySelector('#custom input')
+const darkenButton = document.querySelector('#darken');
+
 
 //Options:
-let color = 'black';
+let color = 'rgb(0,0,0)';
 let greyScale = 200;
 
 //Response functions
@@ -28,6 +30,7 @@ function createPixel(size){
     const pixel = document.createElement('div');
     pixel.style.minWidth = size;
     pixel.style.minHeight = size;
+    pixel.style.backgroundColor='#FFFFFF';
     grid.appendChild(pixel);
     pixel.addEventListener('mouseover', colorPixel);
 }
@@ -61,6 +64,10 @@ function colorPixel(){
             this.style.backgroundColor=randomColor();
             break;
 
+        case 'darken':
+            this.style.backgroundColor=darkerColor(this.style.backgroundColor);
+            break;
+
         default:
             this.style.backgroundColor=color;
     }
@@ -73,6 +80,25 @@ function randomColor(){
       color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
+}
+
+function darkerColor(color) {
+    let colorString = color.slice(4, color.length-1);
+    const rgbValues = colorString.split(',');
+
+    let tintValue;
+    let newColor='rgb(';
+
+    for (let i=0; i<2; i++){
+        tintValue = rgbValues[i]-20;
+        if(tintValue<0){tintValue=0}
+        newColor += tintValue + ',';
+    }
+    tintValue = rgbValues[2]-20;
+    if(tintValue<0){tintValue=0}
+    newColor += tintValue + ')';
+    
+    return newColor;
 }
 
 //Event listeners
@@ -114,6 +140,10 @@ gridSizeButton.addEventListener('click', ()=>{
 resetButton.addEventListener('click',()=>{
     clearGrid();
     createGrid(gridSize);
+});
+
+darkenButton.addEventListener('click', ()=>{
+    color = 'darken';
 });
 
 //Initial script
